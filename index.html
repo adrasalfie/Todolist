@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- PROFILE SECTION -->
+        <div class="profile-section">
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-details">
+                    <div class="profile-name-wrapper">
+                        <h2 class="profile-name" id="profileName">Nama User</h2>
+                        <button class="btn-edit-profile" id="editProfileBtn" title="Edit nama dan posisi">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <p class="profile-title" id="profileTitle">Job Position</p>
+                </div>
+            </div>
+            <div class="time-section">
+                <p class="time-display" id="timeDisplay">Loading...</p>
+            </div>
+        </div>
+
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <h3>Tambah To-Do Baru</h3>
+            
+            <div class="form-group">
+                <label for="taskInput">Tugas:</label>
+                <textarea 
+                    id="taskInput" 
+                    class="task-textarea" 
+                    placeholder="Ketik tugas yang ingin ditambahkan..."
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dueDateInput">Tanggal Target:</label>
+                <input 
+                    type="date" 
+                    id="dueDateInput" 
+                    class="date-input"
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="prioritySelect">Level Prioritas:</label>
+                <select id="prioritySelect" class="priority-select">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <button id="submitBtn" class="btn btn-submit">
+                <i class="fas fa-plus"></i> Submit
+            </button>
+        </div>
+
+        <!-- MAIN CONTENT - 3 COLUMN GRID -->
+        <div class="main-content-wrapper">
+            <!-- TO DO SECTION -->
+            <div class="content-section">
+                <div class="section-header-sticky">
+                    <h3><i class="fas fa-tasks"></i> To Do</h3>
+                    <span class="badge" id="todoCount">0</span>
+                </div>
+                <div class="list-container" id="todoList">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>Tidak ada tugas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVERDUE SECTION -->
+            <div class="content-section">
+                <div class="section-header-sticky">
+                    <h3><i class="fas fa-exclamation-circle"></i> Overdue</h3>
+                    <span class="badge badge-danger" id="overdueCount">0</span>
+                </div>
+                <div class="list-container" id="overdueList">
+                    <div class="empty-state">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Tidak ada tugas terlambat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DONE SECTION -->
+            <div class="content-section">
+                <div class="section-header-sticky">
+                    <h3><i class="fas fa-check-double"></i> Done</h3>
+                    <span class="badge badge-success" id="doneCount">0</span>
+                </div>
+                <div class="list-container" id="doneList">
+                    <div class="empty-state">
+                        <i class="fas fa-smile"></i>
+                        <p>Belum ada tugas yang selesai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <button id="deleteAllBtn" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Hapus Semua
+            </button>
+        </div>
+    </div>
+
+    <!-- EDIT PROFILE MODAL -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editNameInput">Nama:</label>
+                    <input 
+                        type="text" 
+                        id="editNameInput" 
+                        class="form-input" 
+                        placeholder="Masukkan nama Anda"
+                        maxlength="30"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="editTitleInput">Job Position:</label>
+                    <input 
+                        type="text" 
+                        id="editTitleInput" 
+                        class="form-input" 
+                        placeholder="Masukkan posisi Anda"
+                        maxlength="30"
+                    />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelBtn">Batal</button>
+                <button class="btn btn-primary" id="saveProfileBtn">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
